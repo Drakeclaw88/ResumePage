@@ -2,8 +2,8 @@ let aboutMeClick = document.getElementById("aboutMe");
 let resumeClick = document.getElementById("resume");
 let projectsClick = document.getElementById("projects");
 let paperAreaView = document.getElementById("paperText");
-let backTopButton = document.getElementById("backTop");
 let topViewPlace = document.getElementById("topView")
+
 
 let aboutMeText = "Hi again. like i said earlier, my name is oscar åberg and iam 32 years old. Iam"
 + " currently living both in sweden and in Thailand,Bangkok. in the last 2-3 years when the cold has started to sweep over our country I have escaped sweden"
@@ -23,27 +23,46 @@ let resumeText = "This is what i have been doing so far in my life, as you can s
 + "My past work experince has taught me much though that i will bring into this occupation and that will benifit me much <br>"
 +"Warehouse manager <br> Forklift operator <br> Temp Teacher middle/high school <br> Kindergarden teacher";
 
+function createTopViewButton (){
+    paperAreaView.insertAdjacentHTML("afterend", '<button class="topView" onclick="topFunction()" id="backTop" title="Go to top"> Back To Top</button>');
+    let myButtonBackTop = document.getElementById("backTop");
+
+}
+
+
+
+
 function topFunction (){
     topViewPlace.scrollIntoView({behavior: "smooth"});
 
 }
 
 aboutMeClick.addEventListener("click", function(){
-    console.log("klick");
-    paperAreaView.scrollIntoView({behavior: "smooth"});
-    paperAreaView.innerHTML = " <p>" +aboutMeText + " </p>";
+    createTopViewButton();
+    paperAreaView.innerHTML = " <p id='scrollFocus'>" +aboutMeText + " </p>";
+    let myScrollFocus = document.getElementById("scrollFocus");
+    myScrollFocus.scrollIntoView({behavior: "smooth"});
+
 });
-
-
 
 
 resumeClick.addEventListener("click", function(){
-    console.log("klick");
-    paperAreaView.scrollIntoView({behavior: "smooth"});
-
-    paperAreaView.innerHTML = " <p>" +resumeText + " </p>";
+    createTopViewButton();
+    paperAreaView.innerHTML = " <p id='scrollFocus'>" +resumeText + " </p>";
+    let myScrollFocus = document.getElementById("scrollFocus");
+    myScrollFocus.scrollIntoView({behavior: "smooth"});
 
 });
+
 projectsClick.addEventListener("click", function(){
-    console.log("klick");
+    createTopViewButton();
+    paperAreaView.innerHTML = '<a id="scrollFocus" href="https://github.com/Drakeclaw88" target="_blank">This is my github page</a>';
+    let myScrollFocus = document.getElementById("scrollFocus");
+    myScrollFocus.scrollIntoView({behavior: "smooth"});
 });
+
+myButtonBackTop.addEventListener("click", function(){
+    myButtonBackTop.remove();
+
+});
+
